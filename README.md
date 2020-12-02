@@ -1,1 +1,1 @@
-This repo is created to save sql queries
+#This repo is created to save sql queries
