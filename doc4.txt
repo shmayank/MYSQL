@@ -58,5 +58,18 @@
       
 
 	
-	
-	
+Stored Procedure:----
+
+DELIMITER $$
+
+CREATE procedure procedureName()
+
+BEGIN
+
+  sql queryEND$$
+  
+DELIMITER ;	
+
+Call procedure:----
+
+CALL procedureName();
