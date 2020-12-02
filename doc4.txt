@@ -59,6 +59,8 @@
 
 	
 Stored Procedure:----
+If you want to save this query on the database server for execution later, one way to do it is to use a stored procedure.
+Once you save the stored procedure, you can invoke it by using the CALL statement.
 
 DELIMITER $$
 
