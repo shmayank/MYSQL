@@ -1,0 +1,62 @@
+ 1) t1 -
+    Primary Keys : Product_ID,
+    t2 -
+	Primary Key : Category_ID
+	t3 -
+	Foreign Key : Manufacturer_ID,
+	t4 -
+	Primary Key : Prod_Cate_ID
+	Foreign Key : Product_ID, Category_ID
+	t5 -
+	Primary Key : Order_ID,  
+	t6 -
+	Foreign Key : Order_ID, Product_ID
+	
+2) select pd.Product_Name
+   FROM tblProduct_details as pd
+   INNER JOIN tblmManufacturer as m ON pd.Manufacturer_ID=m.Manufacturer_ID
+   where m.Manufacturer_Name='Tata';
+
+3) select count(C.Product_ID)
+   from tblCategory as C
+   INNER JOIN tblProduct_Category_Mapping as pcm ON C.Category_ID=pcm.Category_ID
+   Group By C.Category_ID;
+   
+4) select o.Product_Name
+   FROM tblOrder as o
+   INNER JOIN tblOrder_Product_Mapping as opm ON o.Order_ID=opm.Order_ID
+   Where Delivery_City='Delhi';;
+
+5) select m.Manufacturer_Name, count(m.Manufacturer_ID)
+   FROM tblProduct_details as pd
+   INNER JOIN tblManufacturer as m ON pd.Manufacturer_ID=m.Manufacturer_ID
+   group by m.Manufacturer_ID;
+
+6) select pd.Product_Name 
+   FROM tblProduct_details as pd
+   JOIN tblOrder_Product_Mapping as opm ON pd.Product_ID=opm.Product_ID
+   group by opm.Product_ID
+   Having count(opm.Product_ID)>10;
+   
+7) select pd.Product_Name 
+   FROM tblProduct_details as pd
+   JOIN tblOrder_Product_Mapping as opm ON pd.Product_ID=opm.Product_ID
+   Having sum(opm.Quantity)>100;
+   
+8) select Buyer_Email (select o.Buyer_Email, count(o.Buyer_Email) as val
+   FROM tblOrder as o
+   JOIN tblOrder_Product_Mapping as opm ON o.Order_ID=opm.Order_ID
+   group by o.Buyer_Email
+   Order by val desc)
+   limit 1;
+   
+9) select c.Category_Name, count(pcm.Category_ID) 
+   FROM tblCategory as c
+   Join tblProduct_Category_Mapping as pcm ON c.Category_ID=pcm.Category_ID
+   Group by c.Category_Name;   
+      
+      
+
+	
+	
+	
