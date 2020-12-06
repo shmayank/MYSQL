@@ -1,1 +1,10 @@
+A MySQL trigger is a stored program (with queries) which is executed automatically to 
+respond to a specific event such as insertion, updation or deletion occurring in a table.
 
+
+create trigger t_name
+      -> BEFORE/AFTER INSERT/UPDATE/DELETE ON tablename
+      -> for each row
+      -> begin
+      -> insert into tablename values (name, city, ......etc);
+      -> end;
