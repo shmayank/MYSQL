@@ -1,0 +1,885 @@
+
+A) SQL SELECT:
+
+
+1. Consider the following tables
+table A: 
+Id   Name     Age
+----------------
+12   Ritesh   60
+15   Shalini  24
+99   Mitlesh  11
+
+table B:
+Id   Name   Age
+----------------
+15   Rohit  24
+25   Akash  40
+98   Hari   20
+99   Nitin  11
+
+table C:
+Id   Phone  Area
+-----------------
+10   2200   02  
+99   2100   01
+
+How many tuples does the result of the following SQL query contains?
+SELECT A.id FROM A WHERE  A.age > ALL (SELECT B.age FROM B WHERE B.name = "Ritesh") 		
+
+(A) 4
+(B) 3
+(C) 0
+(D) 1
+Answer- (B)
+
+
+
+2. With SQL, how do you select all the records from a table named "Persons" where the "LastName" is alphabetically between (and including) "Hansen" and "Pettersen"?
+
+a) SELECT LastName>'Hansen' AND LastName<'Pettersen' FROM Persons
+b) SELECT * FROM Persons WHERE LastName BETWEEN 'Hansen' AND 'Pettersen'  
+c) SELECT * FROM Persons WHERE LastName>'Hansen' AND LastName<'Pettersen'
+answer- b
+
+
+3. With SQL, how do you select all the records from a table named "Persons" where the "FirstName" is "Peter" and the "LastName" is "Jackson"?
+
+a) SELECT * FROM Persons WHERE FirstName='Peter' AND LastName='Jackson'  
+b) SELECT * FROM Persons WHERE FirstName<>'Peter' AND LastName<>'Jackson'
+c) SELECT FirstName='Peter', LastName='Jackson' FROM Persons
+answer- a
+
+
+
+4. SELECT COUNT(DISTINCT Country) FROM Customers
+   This query will return the-
+(A) Total number of Country
+(B) Total number of unique Country
+(C) null
+(D) None of the above
+Answer- (B)
+
+
+
+5. Which of the following shows the unique values of the attribute dept_name?
+
+  SELECT ________ dept_name FROM instructor;
+(A) All
+(B) From
+(C) DISTINCT
+(D) UNIQUE
+Answer- (C)
+
+
+6. Which statement is correct to find the details of a product from `products` table which has the highest price?
+(A) SELECT * FROM `products` WHERE price = 'maximum' 
+(B) SELECT * FROM `products` ORDER BY price DESC LIMIT 1
+(C) SELECT * FROM (SELECT * FROM `products` ORDER BY price DESC) as p LIMIT 1
+(D) B & C
+Answer- (D) 
+
+
+7. Query to fetch last record from the table in MySQL database-
+(A) SELECT * FROM Table ORDER BY ID LIMIT 1
+(B) SELECT * FROM Table ORDER BY ID DESC LIMIT 1
+(C) Both
+(D) None of the above
+Answer- (B)
+
+
+
+8. Fetch only common records between 2 tables:
+(A) SELECT * FROM T1 WHERE (SELECT * FROM T2)
+(B) SELECT * FROM T1 INTERSECT SELECT * FROM T2
+(C) Both
+(D) None 
+Answer- (B)
+
+
+
+9. Consider the Customer table
+Id   Name   Age
+----------------
+1   Rohit  24
+2   Akash  40
+3   Hari   24
+4   Nitin  40
+
+Which statement is used to fetch distinct records from the customer table without using distinct keyword?
+(A) SELECT * FROM customer GROUP BY Age;
+(B) SELECT * FROM customer WHERE Age = unique;
+(C) SELECT * FROM  customer;
+(D) A, B
+Answer- (A)
+
+
+
+10. Which statement is correct to find the details of a product from `products` table which has the highest price?
+(A) SELECT * FROM `products` WHERE price = 'maximum' 
+(B) SELECT * FROM `products` ORDER BY price DESC LIMIT 1
+(C) SELECT * FROM (SELECT * FROM `products` ORDER BY price DESC) as p LIMIT 1
+(D) None of these
+Ans: (B), (C)
+
+
+
+11. Consider the following Employee table
+ID   salary   DeptName
+1    10000      EC
+2    40000      EC
+3    30000      CS
+4    40000      ME
+5    50000      ME
+6    60000      ME 
+7    70000      CS 
+How many rows are there in the result of following query?
+SELECT E.ID
+FROM  Employee E
+WHERE  EXISTS  (SELECT E2.salary
+               FROM Employee E2
+               WHERE E2.DeptName = 'CS'
+               AND   E.salary > E2.salary)
+(A) 0
+(B) 4
+(C) 5
+(D) 6
+Ans: (C)
+
+
+
+12. A relational schema for a train reservation database is given below. Passenger (pid, pname, age) Reservation (pid, class, tid)
+Table: Passenger
+pid   pname   age
+-----------------
+ 0    Sachin   65
+ 1    Rahul    66
+ 2    Sourav   67
+ 3    Anil     69
+
+Table : Reservation
+pid  class  tid
+---------------
+ 0    AC   8200
+ 1    AC   8201
+ 2    SC   8201
+ 5    AC   8203
+ 1    SC   8204
+ 3    AC   8202
+What pids are returned by the following SQL query for the above instance of the tables?
+SLECT pid
+FROM Reservation ,
+WHERE class =‘AC’ AND
+    EXISTS (SELECT *
+       FROM Passenger
+       WHERE age > 65 AND
+       Passenger. pid = Reservation.pid)
+(A) 1, 0
+(B) 1, 2
+(C) 1, 3
+(D) 1, 5
+Answer-c
+
+
+
+
+
+
+B) SQL UPDATE:
+
+ 
+13. The SQL UPDATE statement is used to
+(A) insert new recods in a table
+(B) change the structure of a table 
+(C) delete all the recods and insert new recods
+(D) change the existing recods of a table
+Ans: (D)
+
+
+14. Which SQL statement is used to update data in a database?
+
+a) MODIFY    
+b) SAVE AS
+c) SAVE
+d) UPDATE
+answer- d
+
+
+15. How can you change "Hansen" into "Nilsen" in the "LastName" column in the Persons table?
+ 
+a) UPDATE Persons SET LastName='Hansen' INTO LastName='Nilsen'
+b) MODIFY Persons SET LastName='Hansen' INTO LastName='Nilsen'
+c) UPDATE Persons SET LastName='Nilsen' WHERE LastName='Hansen'
+d) MODIFY Persons SET LastName='Nilsen' WHERE LastName='Hansen'
+answer- c
+
+
+
+C) SQL Like operator:
+
+
+16. Which query will return the list of all the customers which are having name ending with “D”
+(A) SELECT * FROM Customers WHERE CustomerName LIKE '%D%';
+(B) SELECT * FROM Customers WHERE CustomerName LIKE 'D%';
+(C) SELECT * FROM Customers WHERE CustomerName LIKE '%D';
+(A) All of the above
+Answer- (C)
+
+
+17. Consider the Blog table:
+blog_Id  blog_title   
+-------------------
+1         News      
+2         Cricket      
+3         written wisdom     
+4         fitnessworld      
+SQL query to find blog title containing word “world” from blog table
+(A) SELECT blog_title FROM Blog WHERE blog_title LIKE '%world%';
+(B) SELECT blog_title FROM Blog WHERE blog_title LIKE 'world';
+(C) SELECT blog_title FROM Blog WHERE blog_title LIKE  %world%;
+(D) SELECT blog_title FROM Blog WHERE blog_title LIKE '[world]';
+Answer- (A)
+
+
+18. In a LIKE Clause, you can ask for any 6 letter value by writing:
+a) LIKE .{6}
+b) LIKE ______ (thats Six Underscore Characters)
+c) LIKE ^.{6}$
+d) LIKE ??????
+Answer-b
+
+
+19. With SQL, how do you select all the records from a table named "Persons" where the value of the column "FirstName" starts with an "a"?
+
+a) SELECT * FROM Persons WHERE FirstName LIKE 'a%'     
+b) SELECT * FROM Persons WHERE FirstName LIKE '%a'
+c) SELECT * FROM Persons WHERE FirstName='%a%'
+d) SELECT * FROM Persons WHERE FirstName='a'
+answer- a
+
+
+
+
+
+D) SQL GROUP BY & Having Clause
+
+
+20. Which of the following statements are true about an SQL query? 
+P : An SQL query can contain a HAVING clause even if it does not have a GROUP BY clause 
+Q : An SQL query can contain a HAVING clause only if it has a GROUP BY clause 
+R : All attributes used in the GROUP BY clause must appear in the SELECT clause 
+S : Not all attributes used in the GROUP BY clause need to appear in the SELECT clause
+
+(A) P, R
+(B) Q, S
+(C) Q, R
+(D) P, S
+Ans: (D)
+
+
+
+
+
+E) SQL DELETE, DROP and Truncate:
+
+
+
+21. With SQL, how can you delete the records where the "FirstName" is "Peter" in the Persons Table?
+
+a) DELETE FirstName='Peter' FROM Persons      
+b) DELETE ROW FirstName='Peter' FROM Persons
+c) DELETE FROM Persons WHERE FirstName = 'Peter'  
+answer- c
+
+
+
+22. Which SQL statement is used to delete data from a database?
+
+a) REMOVE    
+b) DELETE 
+c) COLLAPSE
+d) MODIFY
+answer- b
+
+
+23. Delete duplicate rows from Employee table in MySQL-
+(A) DELETE FROM Employee where empid > 1
+(B) DELETE FROM Employee WHERE empid IN(SELECT empid FROM Employee GROUP BY empid HAVING COUNT(*) > 1)
+(C) DELETE duplicate from employee
+(D) None 
+Ans: (B)
+
+
+
+24. Which command is used to remove all rows from a table?
+a) Delete
+b) Truncate
+c) Remove
+d) Both A & B
+Answer-b
+
+
+
+25.Which SQL statement is used to delete a database?
+
+a) REMOVE    
+b) DELETE 
+c) DROP
+d) TURNCATE
+answer- C
+
+
+26. Which statement is used to delete the existing record with schema of a table 
+(A) DELETE FROM table_name
+(B) DROP table table_name	
+(C) Both
+(D) None of these
+Answer- (B)
+
+
+
+
+F) SQL STORE PROCEDURE:
+
+
+27. Which of the following is/are true:
+
+1. SQL queries are more secure
+2. Stored Procedures are more secure
+(A) 1
+(B) 2
+(C) 1,2
+(D) None of these
+Answer- (B) 
+
+
+
+28. Which statement is true about stored procedure:
+(A) INSERT, UPDATE, DELETE can be performed
+(B) Only SELECT is allowed 
+(C) Both
+(D) None
+Answer- (C)
+
+
+
+29. To produce a stored function, which statement is used?
+a) PRODUCE FUNCTION
+b) CREATE FUNCTION
+c) PRODUCE PROCEDURE
+d) CREATE PROCEDURE
+Answer-b
+
+
+30. Suppose a stored function named PI() is written in the database ‘sampdb’. How would it be called?
+a) PI()
+b) sampdb.PI()
+c) MySQL.PI()
+d) db.PI()
+Answer-b
+
+
+
+
+G) SQL TRIGGER:
+
+
+31. Which of the following specifies when the trigger will be executed?
+
+(A) BEFORE
+(B) AFTER
+(C) INSTEAD OF
+(D) All of the above
+Ans: (D)
+
+ 
+32. What are the after triggers ?
+(A) Triggers generated after a particular operation
+(B) These triggers run after an insert, update or delete on a table
+(C) These triggers run after an insert, views, update or delete on a table
+(D) Both b and c
+Ans: (B)
+
+
+
+
+
+H) SQL JOIN:
+
+
+33. What is the most common type of join?
+
+a) INNER JOIN    
+b) JOINED
+c) JOINED TABLE
+d) INSIDE JOIN
+answer- a
+
+
+34. Consider the following tables:
+OrderID	 Cust_ID	 OrderDate
+10308		2		 1996-09-18
+10309		37		 1996-09-19
+10310		77		 1996-09-20
+
+Cust_ID	 CustomerName   Country
+1		  Alfreds  	  	Germany
+2    	  Trujillo      Mexico
+3	      Antonio       Mexico
+
+How many rows will return in INNER JOIN?
+
+(A) 1
+(B) 3
+(C) 4
+(D) 6
+Ans: (A)
+
+
+
+35. Consider the following tables
+table A:
+Id   Name    Age
+----------------
+12   Ritesh   60
+15   Shalini  24
+99   Mitlesh  11
+
+
+table B:
+Id   Name   Age
+----------------
+15   Rohit  24
+25   Akash  40
+98   Hari   20
+99   Nitin  11
+
+which is correct SQL query:
+
+(A) SELECT A.Name, B.Age 
+	FROM A
+	INNER JOIN ON B A.Id = B.Id
+	Where A.Age = '16'
+	
+(B) SELECT A.Name, B.Age 
+	FROM A
+	INNER JOIN B ON B A(Id) = B(Id)
+	
+(C) SELECT A.Name, B.Age 
+	FROM A
+	INNER JOIN B ON A.Id = B.Id	
+	
+(D) None of these
+
+Ans: (C)
+
+
+
+36. Database table by name Loan_Records is given below.
+Borrower    Bank_Manager   Loan_Amount
+ Ramesh      Sunderajan     10000.00
+ Suresh      Ramgopal       5000.00
+ Mahesh      Sunderajan     7000.00
+What is the output of the following SQL query?
+SELECT Count(*) 
+FROM  ( ( SELECT Borrower, Bank_Manager 
+          FROM Loan_Records) AS S 
+          NATURAL JOIN ( SELECT Bank_Manager, Loan_Amount 
+	  FROM Loan_Records) AS T );
+a) 3
+b) 9
+c) 5
+d) 6
+Answer-c
+
+
+
+37. What is ghi in the following MySQL statement?
+CREATE TRIGGER abc (...) (...) ON def FOR EACH ROW ghi;
+a) trigger name
+b) table name
+c) trigger statement
+d) update statement
+Answer-c
+
+
+
+38. What is def in the following MySQL statement?
+CREATE TRIGGER abc (...) (...) ON def FOR EACH ROW ghi;
+a) trigger name
+b) table name
+c) trigger statement
+d) update statement
+Answer-b
+
+
+
+
+I) SQL Aggregate function:
+
+
+39. Which Of the following is an aggregate function in MySQL?
+a) LIKE
+b) Union
+c) Group By
+d) MAX
+Answer-d
+
+
+
+
+
+J) SQL BETWEEN, LIMIT:
+
+
+40. With SQL, how can you return the number of records in the "Persons" table?
+  
+a) SELECT LEN(*) FROM Persons
+b) SELECT NO(*) FROM Persons
+c) SELECT COUNT(*) FROM Persons   
+d) SELECT COLUMNS(*) FROM Persons
+answer- c
+
+
+
+41. With SQL, how can you return all the records from a table named "Persons" sorted descending by "FirstName"?
+
+a) SELECT * FROM Persons ORDER BY FirstName DESC    
+b) SELECT * FROM Persons SORT 'FirstName' DESC
+c) SELECT * FROM Persons ORDER FirstName DESC
+d) SELECT * FROM Persons SORT BY 'FirstName' DESC
+answer- a
+
+
+
+42. Which SQL keyword is used to sort the result-set?
+  
+a) SORT
+b) ORDER
+c) ORDER BY 
+d) SORT BY
+answer- c
+
+
+
+43. Which SQL statement is used to return only different values?
+
+a) SELECT DISTINCT    
+b) SELECT DIFFERENT
+c) SELECT UNIQUE
+answer- a
+
+
+
+44. Which operator is used to search for a specified pattern in a column?
+
+a) GET      
+b) LIKE
+c) FROM
+answer- b
+
+
+
+45. Which operator is used to select values within a range?
+
+a) BETWEEN     
+b) RANGE
+c) WITHIN
+answer- a
+
+
+
+46. The SQL keyword BETWEEN is used?
+a) To Limit The Columns Displayed
+b) As A Wildcard
+c) For Ranges
+d) None Of The Above
+Answer-a
+
+
+
+
+K) SQL UNION & INTERSECT:
+
+
+47. If there are two tables T1 and T2, and both have common record. 
+Which keyword will returns all the recods but common records only once in SQL?
+(A) UNION
+(B) UNION ALL
+(C) INTERSECT
+(D) None
+Ans: (A)
+
+
+48. Fetch only common records between 2 tables:
+(A) SELECT * FROM T1 WHERE (SELECT * FROM T2)
+(B) SELECT * FROM T1 INTERSECT SELECT * FROM T2
+(C) Both
+(D) None 
+
+Answer- (B)
+
+
+
+
+L) SQL KEY:
+
+
+49. How many Primary key a table can max have?
+(A) Depends on number of Attribute
+(B) Only 2
+(C) Only 1
+(D) None of the above
+Ans: (C)
+
+
+
+ 
+M) SQL ALTER:
+
+50. Which of the following option is used to change the schema of a table in MySQL database?
+(A) ALTER
+(B) UPDATE
+(C) Only B
+(D) Both
+Ans: (A)
+
+
+
+51.If there is more than one key for relation schema in DBMS then each key in relation schema is classified as
+(A) Super key
+(B) Prime key
+(C) Primary key 
+(D) Candidate key
+Ans: (D)
+
+
+
+
+N) MySQL Questions:
+
+
+52. Which program copies the databases from one server to another?
+a) Mysqlcopydb
+b) Mysqldbcopy
+c) Mysqlflushdb
+d) Mysqldbflush
+Answer-b
+
+
+
+53. Which function returns reference to array of row values?
+a) Fetch()
+b) Fetchrow_array()
+c) Fetchrow_hashref()
+d) Fetchrow_arrayref()
+Answer-c
+
+
+
+54. Which is the log in which data changes received from a replication master server are written?
+a) Error Log
+b) Binary Log
+c) General Query Log
+d) Relay Log
+Answer-d
+
+
+
+55. The maximum length of the char columns is
+a) 65, 535 Bytes
+b) 256 Bytes
+c) 255 Bytes
+d) None Of The Mentioned
+Answer-c
+
+
+
+56. Mysql support different character sets, Which command is used to display all character sets?
+a) SHOW;
+b) SHOW CHARACTER SET;
+c) CHARACTER SET;
+d) None Of The Mentioned
+Answer-b
+
+
+
+57. Which one is the correct declaration for choosing the character set other than default?
+a) Varchar(20);
+b) Varchar(20) Character Set Utf8;
+c) Varchar(20) Character Set;
+d) None Of The Mentioned
+Answer-b
+
+
+
+58. Which among the following have the maximum bytes?
+a) Varchar
+b) Char
+c) Both Varchar And Char
+d) Text Type
+Answer-d
+
+
+
+59. To use MySQL on your computer, you will need
+a) Perl, PHP Or Java
+b) A Browser
+c) Some Sort Of Client Program To Access The Databases
+d) FTP And Telnet
+Answer-c
+
+
+60. What kind of replication is supported by the MySQL server?
+a) Multiple-master Replication
+b) Single File Based Clustering
+c) Master To Slave Replication
+d) MySQL Does not Support Replication
+Answer-c
+
+
+
+61. How many distinct, different values can you hold in an enum field?
+a) 255
+b) 7
+c) 65535
+d) 2 (True And False)
+Answer-c
+
+
+62. Which option executes all SQL statements in a SQL script irrespective of the number of errors?
+a) –ensure
+b) –violent
+c) –force
+d) –run
+Answer-c
+
+
+
+63. What is def in the following MySQL statement?
+DECLARE abc HANDLER FOR def ghi;
+a) action
+b) condition value
+c) statement
+d) null
+Answer-b
+
+
+64. Which Of The Following Is NOT Available In MySQL:
+a) REVOKE
+b) FETCH
+c) LIKE
+d) JOIN
+Answer-b
+
+
+
+
+65. Which program reads the statement from a binary log?
+a) mysql_config
+b) mysqlbinlog
+c) mysqldump
+d) mysqlimport
+Answer-b
+
+
+
+66. What loads data files into tables?
+a) mysqldump
+b) mysqladmin
+c) mysqlimport
+d) mysqlexport
+Answer-c
+
+
+
+
+
+O) SQL Arithmetic operators:
+
+
+67. Which of the following is the correct order of precedence (high to low)?
+a) !, ^, <<, XOR
+b) ^, !, <<, XOR
+c) !, <<, XOR, ^
+d) !, ^, XOR, <<
+Answer-a
+
+
+68. The expression 12 DIV 5 evaluates to ____________
+a) 2.4
+b) 2
+c) error
+d) 0
+Answer-b
+
+
+
+
+
+P) Data Control Language:
+
+
+69. If you want to undo a GRANT, you should use
+a) REVOKE
+b) UNDO
+c) UNGRANT
+d) DELETE
+Answer-a
+
+
+
+Q) SQL CREATE DB:
+
+70. Which SQL statement is used to create a database table called 'Customers'?
+ 
+a) CREATE DATABASE TAB Customers
+b) CREATE DATABASE TABLE Customers
+c) CREATE DB Customers
+d) CREATE TABLE Customers  
+answer- d
+
+
+
+
+
+R) SQL INSERT:
+
+
+
+71. With SQL, how can you insert "Olsen" as the "LastName" in the "Persons" table?
+
+a) INSERT INTO Persons (LastName) VALUES ('Olsen')  
+b) INSERT ('Olsen') INTO Persons (LastName)
+c) INSERT INTO Persons ('Olsen') INTO LastName
+answer- a
+
+
+
+
+S) SQL constraints:
+
+
+72. The NOT NULL constraint enforces a column to not accept NULL values.
+
+a) True     
+b) False
+answer- a
+
+
+
+
+T) SQL AND & OR operator:
+
+
+73. The OR operator displays a record if ANY conditions listed are true. The AND operator displays a record if ALL of the conditions listed are true
+
+a) True      
+b) False
+answer- a
+
+
+
+
+
+
